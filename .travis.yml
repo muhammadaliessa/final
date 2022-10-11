@@ -1,6 +1,6 @@
 branches :
   only:
-    -main
+    - main
 language: node_js
 node_js:
   - 13
@@ -17,17 +17,17 @@ before_script:
 
 script:
   - docker --version
-  - docker-compose -f docker-compose-build.yaml build --parallel
+  - docker compose -f docker-compose-build.yaml build --parallel
   #tags
-  - docker tag  udagram-reversproxy muhammmedessa/udagram-reverseproxy:v7
-  - docker tag  udagram-api-feed    muhammmedessa/udagram-api-feed:v7
-  - docker tag  udagram-api-user    muhammmedessa/udagram-api-user:v7
-  - docker tag  udagram-frontend    muhammmedessa/udagram-frontend:v7
+  - docker tag  udagram-reversproxy muhammmedessa/udagram-reverseproxy
+  - docker tag  udagram-api-feed    muhammmedessa/udagram-api-feed
+  - docker tag  udagram-api-user    muhammmedessa/udagram-api-user
+  - docker tag  udagram-frontend    muhammmedessa/udagram-frontend
 
   #tasks
   after_success:
     - echo "DOCKER_PASSWORD" | docker login -u "DOCKER_USERNAME" --password-stdin
-    - docker push muhammmedessa/udagram-reverseproxy:v7
-    - docker push muhammmedessa/udagram-api-feed:v7
-    - docker push muhammmedessa/udagram-api-user:v7
-    - docker push muhammmedessa/udagram-frontend:v7
+    - docker push muhammmedessa/udagram-reverseproxy
+    - docker push muhammmedessa/udagram-api-feed
+    - docker push muhammmedessa/udagram-api-user
+    - docker push muhammmedessa/udagram-frontend
