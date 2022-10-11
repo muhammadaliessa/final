@@ -1,4 +1,4 @@
-branches :
+branches:
   only:
     - main
 language: node_js
@@ -6,19 +6,19 @@ node_js:
   - 13
 
 services:
- - docker
+  - docker
+
 
 install:
- - echo "nothing needs to be installed"
+  - echo "nothing needs to be installed"
 
-#test scripts
+
 before_script:
-  - echo "no tests."
+  - echo "no tests"
 
 script:
-  - docker --version
-  - docker compose -f docker-compose-build.yaml build --parallel
-  #tags
+  - docker --version 
+  - docker-compose -f docker-compose-build.yaml build --parallel
   - docker tag  udagram-reversproxy muhammmedessa/udagram-reverseproxy
   - docker tag  udagram-api-feed    muhammmedessa/udagram-api-feed
   - docker tag  udagram-api-user    muhammmedessa/udagram-api-user
@@ -26,8 +26,8 @@ script:
 
   #tasks
   after_success:
-    - echo "DOCKER_PASSWORD" | docker login -u "DOCKER_USERNAME" --password-stdin
-    - docker push muhammmedessa/udagram-reverseproxy
-    - docker push muhammmedessa/udagram-api-feed
-    - docker push muhammmedessa/udagram-api-user
-    - docker push muhammmedessa/udagram-frontend
+  - echo "DOCKER_PASSWORD" | docker login -u "DOCKER_USERNAME" --password-stdin
+  - docker push muhammmedessa/udagram-reverseproxy
+  - docker push muhammmedessa/udagram-api-feed
+  - docker push muhammmedessa/udagram-api-user
+  - docker push muhammmedessa/udagram-frontend
