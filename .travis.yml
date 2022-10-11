@@ -24,8 +24,8 @@ script:
   - docker tag  udagram-api-user    muhammmedessa/udagram-api-user
   - docker tag  udagram-frontend    muhammmedessa/udagram-frontend
 
-  #tasks
-  after_success:
+
+after_success:
   - echo "DOCKER_PASSWORD" | docker login -u "DOCKER_USERNAME" --password-stdin
   - docker push muhammmedessa/udagram-reverseproxy
   - docker push muhammmedessa/udagram-api-feed
