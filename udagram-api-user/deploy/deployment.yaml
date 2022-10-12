@@ -35,7 +35,7 @@ spec:
           valueFrom:
             configMapKeyRef:
               name: env-config
-              key: FWD_AWS_BUCKET
+              key: AWS_BUCKET
         - name: AWS_PROFILE
           valueFrom:
             configMapKeyRef:
